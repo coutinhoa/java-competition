@@ -8,8 +8,9 @@ public class Plot {
 
     public int getTreasure() {return treasure;}
 
-    public void setTreasure() {
+    public void setTreasure(int treasure) {
         this.treasure= treasure;
     }
 
 }
+

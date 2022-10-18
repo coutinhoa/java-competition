@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         Competition competition = new Competition();
 
@@ -20,40 +20,42 @@ public class Main {
         scanner.nextLine();
 
         while(true) {
-            String command = scanner.nextLine();
+            String command = scanner.next();
 
             if(command.equals("logout")) {
-                /*if(){
-                    System.out.println("Correu mal! Foram ambos desclassificados.");
-                }else if(){
-                    System.out.println("Ainda havia tesouros por descobrir...");
-                }else (){
-                    System.out.println("Todos os tesouros foram descobertos!");
-                }*/
+                if(competition.getLandSymbols().indexOf("*")==-1){
+                    System.out.println("All treasures were discovered!");
+                    }else if(competition.getLandSymbols().contains("*")){
+                    System.out.println("There are still treasures to discover...");}
+                    else {System.out.println("Correu mal! Foram ambos desclassificados.");}
                 scanner.close();
                 return;
             } else if(command.equals("wealth")) {
-                System.out.println(String.format("Burried wealth is: %s",competition.getBurriedWealth()));
+                System.out.println(String.format("Buried wealth is: %s",competition.getBuriedWealth()));
+                scanner.nextLine();
             } else if(command.equals("land")) {
-                System.out.println("land");
+                System.out.println(competition.getLandSymbols());
+                scanner.nextLine();
+            } else if(command.equals("dig")) {
+                int direction = scanner.nextInt();
+                String name = scanner.nextLine();
+                try{
+                    competition.dig(name, direction);
+                }
+                catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+                /*else{
+                    System.out.println(String.format("%s perdeu a licenca de escavacao"));
+                }*/
             } else if(command.equals("merito")) {
+                String name = scanner.nextLine();
+                System.out.println(String.format("merit of %s: %s", name , competition.archeologistMerit(name)));
                 /*if(!nameOne || !nameTwo){
                     System.out.println("Arqueologo inexistente");
                 }else if(nameOne.equals("disqualified") || nameTwo.equals("disqualified")){
                     System.out.println("Arqueologo desclassificado");
-                }else {
-                    System.out.println(String.format("merito de : %s"));
-                }*/;
-            } else if(command.equals("escavacao")) {
-                /*if (jump==0){
-                    System.out.println(Salto invalido);
-                }else if (jump>0 && (!nameOne || !nameTwo)){
-                    System.out.println("Arqueologo inexistente");
-                }else if (jump>0 && (nameOne.equals("disqualified") || nameTwo.equals("disqualified")){
-                    System.out.println("Arqueologo desclassificado");
-                }else if (""){
-                    System.out.println(String.format("%s perdeu a licenca de escavacao"));
-                }*/;
+                }*/
             } else {System.out.println("Invalid command");}
         }
     }
