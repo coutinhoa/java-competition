@@ -48,14 +48,9 @@ public class Main {
                 /*else{
                     System.out.println(String.format("%s perdeu a licenca de escavacao"));
                 }*/
-            } else if(command.equals("merito")) {
+            } else if(command.equals("merit")) {
                 String name = scanner.nextLine();
-                System.out.println(String.format("merit of %s: %s", name , competition.archeologistMerit(name)));
-                /*if(!nameOne || !nameTwo){
-                    System.out.println("Arqueologo inexistente");
-                }else if(nameOne.equals("disqualified") || nameTwo.equals("disqualified")){
-                    System.out.println("Arqueologo desclassificado");
-                }*/
+                System.out.println(String.format("merit of %s: %s", name.trim() , competition.getArcheologistMerit(name)));
             } else {System.out.println("Invalid command");}
         }
     }

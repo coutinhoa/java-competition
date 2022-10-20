@@ -41,16 +41,12 @@ public class Competition {
         return null;
     }
 
-    public Archeologist archeologistMerit(String name) throws Exception {
+    public int getArcheologistMerit(String name) throws Exception {
         Archeologist a = findArcheologist(name);
-        for(Archeologist element : archeologists) {
-            element.getMerit();
-            //element.setMerit();
-        } /*if(a!=) {
+        if(a==null) {
             throw new Exception("Archeologist does not exist.");
-        }/*if(!nameOne || !nameTwo){
-            System.out.println("Arqueologo inexistente");*/
-        return null;
+        }
+        return a.getMerit();
     }
 
 }

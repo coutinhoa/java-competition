@@ -1,0 +1,208 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1603743130 { 
+   	label=Archeologist
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Archeologist1603743130[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Archeologist</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   merit: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   position: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addMerit(merit: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2360843 { 
+   	label=Land
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Land2360843[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Land</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   plots: ArrayList&lt;Plot&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   points: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ digPlot(archeologist: Archeologist, moveDirection: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Main2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2490625 { 
+   	label=Plot
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Plot2490625[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Plot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   digCounter: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treasure: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dig()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_572471711 { 
+   	label=Competition
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Competition572471711[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Competition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   archeologists: ArrayList&lt;Archeologist&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   land: Land [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addCompetitor(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addPlotToLand(plot: Plot)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dig(name: String, direction: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- findArcheologist(name: String): Archeologist</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getArcheologistMerit(name: String): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Competition572471711 -> Archeologist1603743130[label="archeologists
+[0..*]"];
+Competition572471711 -> Land2360843[label="land
+[0..1]"];
+Land2360843 -> Archeologist1603743130[label="digPlot() -> addMerit()"];
+Land2360843 -> Plot2490625[label="plots
+[0..*]"];
+    
+}
+@enduml

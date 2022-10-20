@@ -20,9 +20,9 @@ public class Archeologist {
 
     public void setPosition(int position) {this.position= position;}
 
-
     public int getMerit() {return merit;}
 
-    public void setMerit(int merit) {this.merit= merit;}
+    public void addMerit(int merit) {
+        this.merit += merit;}
 
 }
