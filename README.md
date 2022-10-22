@@ -1,3 +1,4 @@
 # java-competition
 
-![diagram](https://user-images.githubusercontent.com/104270514/197023216-e77ffd50-76a6-4f93-9b81-48f598974886.jpg)
+<img width="223" alt="Main_structure" src="https://user-images.githubusercontent.com/104270514/197339038-896ee68c-cd12-4815-a5eb-ff7c7e6f59a6.png">
+
