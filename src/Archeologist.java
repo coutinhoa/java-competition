@@ -4,10 +4,13 @@ public class Archeologist {
 
     private int merit;
 
+    private boolean disqualified;
+
     public Archeologist(String name) {
         this.name = name;
         this.position =-1;
         this.merit= 0;
+        this.disqualified=false;
     }
 
     public String getName() {return name;}
@@ -24,5 +27,13 @@ public class Archeologist {
 
     public void addMerit(int merit) {
         this.merit += merit;}
+
+    public void disqualify(){
+        this.disqualified=true;
+    }
+
+    public boolean isDisqualified(){
+        return disqualified;
+    }
 
 }

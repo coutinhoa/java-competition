@@ -29,6 +29,11 @@ public class Competition {
         if(a == null) {
             throw new Exception("Archeologist does not exist.");
         }
+
+        if(a.isDisqualified()){
+            throw new Exception("Archeologist lost the license.");
+        }
+
         land.digPlot(a, direction);
     }
 
@@ -49,4 +54,12 @@ public class Competition {
         return a.getMerit();
     }
 
+    public boolean allCompetitorsDisqualified(){
+        for(Archeologist element : archeologists) {
+            if (!element.isDisqualified()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

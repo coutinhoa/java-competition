@@ -23,11 +23,13 @@ public class Main {
             String command = scanner.next();
 
             if(command.equals("logout")) {
-                if(competition.getLandSymbols().indexOf("*")==-1){
+                if(competition.allCompetitorsDisqualified()) {
+                    System.out.println("Both are disqualified.");
+                } else if(competition.getLandSymbols().indexOf("*")==-1){
                     System.out.println("All treasures were discovered!");
-                    }else if(competition.getLandSymbols().contains("*")){
-                    System.out.println("There are still treasures to discover...");}
-                    else {System.out.println("Correu mal! Foram ambos desclassificados.");}
+                } else if(competition.getLandSymbols().contains("*")){
+                    System.out.println("There are still treasures to discover...");
+                }
                 scanner.close();
                 return;
             } else if(command.equals("wealth")) {
@@ -45,13 +47,10 @@ public class Main {
                 catch (Exception e){
                     System.out.println(e.getMessage());
                 }
-                /*else{
-                    System.out.println(String.format("%s perdeu a licenca de escavacao"));
-                }*/
             } else if(command.equals("merit")) {
                 String name = scanner.nextLine();
                 System.out.println(String.format("merit of %s: %s", name.trim() , competition.getArcheologistMerit(name)));
-            } else {System.out.println("Invalid command");}
+            } else {System.out.println("Invalid command.");}
         }
     }
 }

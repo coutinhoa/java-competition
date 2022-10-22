@@ -44,15 +44,16 @@ public class Land {
     }
     public void digPlot(Archeologist archeologist , int moveDirection) throws Exception {
         if(moveDirection == 0) {
-            throw new Exception("Invalid move");
+            throw new Exception("Invalid move.");
         }
-        int resultingDirection = archeologist.getPosition()+ moveDirection;
-
-        if(resultingDirection<-1 || resultingDirection>plots.size()){
-            throw new Exception("Archeologist disqualified");
+        int resultingIndex = archeologist.getPosition()+ moveDirection;
+        //System.out.println(resultingIndex);
+        if(resultingIndex <= -1 || resultingIndex >= plots.size()){
+            archeologist.disqualify();//here we disqualify the player
+            throw new Exception("Archeologist disqualified.");
         }
 
-        Plot p = plots.get(resultingDirection);
+        Plot p = plots.get(resultingIndex);
 
         int points = 0;
 
@@ -64,7 +65,7 @@ public class Land {
 
         p.dig();
 
-        archeologist.setPosition(resultingDirection);
+        archeologist.setPosition(resultingIndex);
 
         archeologist.addMerit(points);
     }
